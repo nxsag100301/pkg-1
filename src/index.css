@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-jakarta;
+}
+
+@font-face {
+  font-family: 'SVN-Harmony';
+  src: url('/assets/font/SVN-Harmony.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.button {
+  @apply rounded-[40px] cursor-pointer flex items-center justify-center;
+}
+
+.input {
+  @apply border p-4 h-[60px] bg-gray-30 rounded-[20px];
+}
