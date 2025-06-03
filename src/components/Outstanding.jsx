@@ -3,11 +3,15 @@ import Card from './Card'
 
 export default function Outstanding() {
   return (
-    <div className='relative flex flex-col gap-[72px] bg-outstanding min-h-[793px] max-h-[793px] pt-[96px] px-[80px] pb-[80px] z-20'>
-      <div className='flex justify-center uppercase font-bold text-[36px] leading-[44px]'>
+    <div
+      id='outstanding'
+      className='flex flex-col gap-[50px] md:gap-[72px] bg-outstanding h-auto pt-[96px] 
+      px-[80px] pb-[80px]'
+    >
+      <div className='flex justify-center uppercase font-bold text-[20px] md:text-[36px] leading-[44px]'>
         Nổi bật
       </div>
-      <div className='flex flex-row justify-between h-[465px] w-[1280px] gap-9'>
+      <div className='flex flex-col justify-center items-center md:flex-row md:justify-between gap-9'>
         <Card
           image='/assets/card-image.png'
           title='Sự kiện'

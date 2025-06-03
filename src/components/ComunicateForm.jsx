@@ -1,9 +1,11 @@
-import React from 'react'
 import UserForm from './UserForm'
 
 function ComunicateForm() {
   return (
-    <div className='absolute top-[4984px] px-20 flex flex-row gap-[157px] bg-outstanding h-[1024px] w-full items-center'>
+    <div
+      id='booking'
+      className='px-20 flex flex-row justify-between gap-[157px] bg-outstanding h-[1024px] w-full items-center'
+    >
       <div className='w-[959px] h-[836px] flex flex-col gap-8'>
         <div className='flex flex-col gap-4'>
           <span className='uppercase font-bold text-[36px] leading-[44px]'>
@@ -16,7 +18,7 @@ function ComunicateForm() {
             giải và trao đổi.
           </span>
         </div>
-        <div className='w-[959px] h-[584px]'>
+        <div className=' h-[584px]'>
           <UserForm />
         </div>
       </div>

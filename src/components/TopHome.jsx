@@ -3,10 +3,7 @@ import Hero from './Hero'
 
 function TopHome() {
   return (
-    <div className='relative bg-dark-brown max-h-[1024px] min-h-[1024px] z-20'>
-      <Navbar />
-      <Hero />
-    </div>
+    <div className='relative bg-dark-brown max-h-[934px] min-h-[934px] z-20'></div>
   )
 }
 

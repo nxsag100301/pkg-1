@@ -5,11 +5,18 @@ export default {
     extend: {
       colors: {
         primary: '#B22830',
+        'primary-100': '#A11122',
         'dark-brown': '#1F1717',
+        'dark-brown2': '#470004',
         outstanding: '#FFF8F7',
         'border-card': '#EFF0F7',
         'gray-90': '#626276',
-        'gray-30': '#EFF0F7'
+        'gray-30': '#EFF0F7',
+        'gray-50': '#CCCDE0',
+        'gray-70': '#8B8BA4',
+        'gray-100': '#4D4D60',
+        'midnight-100': '#150202',
+        'yellow-1': '#FFD147'
       }
     },
     fontFamily: {
