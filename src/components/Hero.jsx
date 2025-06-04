@@ -1,4 +1,4 @@
-import React from 'react'
+import { FaArrowRight } from 'react-icons/fa6'
 
 export default function Hero() {
   return (
@@ -28,8 +28,8 @@ export default function Hero() {
         <div className='leading-[35px] md:leading-[40px] font-medium text-[18px] md:text-[24px] text-white'>
           Kết nối năng lượng <br /> Khai phá tiềm năng trong mỗi cá nhân
         </div>
-        <div className='button text-primary text-[20px] leading-[32px] font-medium font-jakarta bg-white py-2 h-[64px] w-[210px]'>
-          Xem thêm &#8594;
+        <div className='button text-primary hover:text-white text-[20px] leading-[32px] gap-2 font-medium font-jakarta bg-white hover:bg-primary py-2 h-[64px] w-[210px]'>
+          Xem thêm <FaArrowRight className='relative text-[17px] top-[2px]' />
         </div>
       </div>
       <img
