@@ -7,6 +7,8 @@ import Footer from './components/Footer'
 import DetailPost from './pages/DetailPost'
 import ListOutstanding from './pages/ListOutstanding'
 
+// https://pkg-1.vercel.app/
+
 function App() {
   return (
     <Router>

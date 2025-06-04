@@ -7,11 +7,46 @@ function UserForm() {
     email: '',
     fromDate: '',
     toDate: '',
-    location: '',
+    bookType: 'ONLINE',
+    address: '',
     content: ''
   })
-
   const [errors, setErrors] = useState({})
+
+  const sendBooking = async (form) => {
+    try {
+      const res = await fetch(
+        'https://brandname.phuckhangnet.vn/api/store/StoredProcedure',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            loai: 101,
+            customphone: form.phone,
+            customname: form.name,
+            customemail: form.email,
+            note: form.content,
+            addressbook:
+              form.bookType === 'ADDRESS'
+                ? form.address
+                : form.bookType === 'ONLINE'
+                ? 'Hẹn trực tuyến'
+                : 'Hẹn tại cửa hàng',
+            addressbookvalue: form.bookType,
+            datetimebook1: form.fromDate,
+            datetimebook2: form.toDate
+          })
+        }
+      )
+      const data = await res.json()
+      if (data.error) {
+        throw new Error(data.error)
+      }
+      return data.responses
+    } catch (error) {
+      console.log('error fetch news: ', error.message)
+    }
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -26,7 +61,8 @@ function UserForm() {
     else if (!/\S+@\S+\.\S+/.test(form.email))
       newErrors.email = 'Email không hợp lệ'
     if (!form.fromDate || !form.toDate) newErrors.date = 'Vui lòng chọn ngày'
-    if (!form.location) newErrors.location = 'Vui lòng nhập địa điểm'
+    if (form.bookType === 'ADDRESS' && !form.address)
+      newErrors.address = 'Vui lòng nhập địa chỉ hẹn'
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -35,7 +71,17 @@ function UserForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (validate()) {
-      console.log('form: ', form)
+      sendBooking(form)
+      setForm({
+        name: '',
+        phone: '',
+        email: '',
+        fromDate: '',
+        toDate: '',
+        bookType: '',
+        address: '',
+        content: ''
+      })
     }
   }
 
@@ -122,22 +168,35 @@ function UserForm() {
       <div>
         <label className='font-medium'>Địa điểm</label>
         <select
-          name='location'
-          value={form.location}
+          name='bookType'
+          value={form.bookType}
           onChange={handleChange}
-          className={`input w-full ${
-            errors.location ? 'border-red-500' : 'border-gray-300'
-          }`}
+          className='input w-full border-gray-300'
         >
-          <option value=''>Hẹn tại cửa hàng</option>
-          <option value='Hồ Chí Minh'>Hồ Chí Minh</option>
-          <option value='Hà Nội'>Hà Nội</option>
-          <option value='Đà Nẵng'>Đà Nẵng</option>
+          <option value='ONLINE'>Hẹn trực tuyến</option>
+          <option value='OFFLINE'>Hẹn tại cửa hàng</option>
+          <option value='ADDRESS'>Hẹn tại địa chỉ</option>
         </select>
-        {errors.location && (
-          <p className='text-red-500 text-sm'>{errors.location}</p>
-        )}
       </div>
+
+      {form.bookType === 'ADDRESS' && (
+        <div>
+          <label className='font-medium'>Địa chỉ</label>
+          <input
+            type='text'
+            name='address'
+            value={form.address}
+            onChange={handleChange}
+            placeholder='Nhập địa chỉ'
+            className={`input w-full ${
+              errors.address ? 'border-red-500' : 'border-gray-300'
+            }`}
+          />
+          {errors.address && (
+            <p className='text-red-500 text-sm'>{errors.address}</p>
+          )}
+        </div>
+      )}
 
       <div className='flex flex-col'>
         <label className='font-medium'>Nội dung tư vấn</label>
