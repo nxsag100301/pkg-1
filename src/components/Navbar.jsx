@@ -63,7 +63,7 @@ export default function Navbar() {
   }, [isOpenMenu])
 
   return (
-    <div className='h-[90px] w-full flex flex-row items-center justify-between bg-primary py-6 px-6 sm:px-20'>
+    <div className='fixed top-0 left-0 z-20 h-[90px] w-full flex flex-row items-center justify-between bg-primary py-6 px-6 sm:px-20'>
       <div className='h-[70px] flex flex-row gap-[72px] items-center'>
         <img
           src='/assets/logophuckhang.png'
