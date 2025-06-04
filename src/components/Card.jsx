@@ -10,7 +10,7 @@ function Card({ image, title, description, url, date }) {
       <img
         src={image}
         alt='Card image'
-        className='w-full h-[253px] object-contain'
+        className='w-full h-[253px] object-cover'
       />
       <div className='flex flex-col gap-4 px-4'>
         <div className='flex flex-col gap-1 md:gap-2'>
