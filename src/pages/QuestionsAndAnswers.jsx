@@ -4,6 +4,10 @@ function QuestionsAndAnswers() {
   const [listQA, setListQA] = useState([])
   const [expandedIds, setExpandedIds] = useState([])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const toggleExpand = (id) => {
     setExpandedIds((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
@@ -38,7 +42,7 @@ function QuestionsAndAnswers() {
     getQA()
   }, [])
   return (
-    <div className='bg-outstanding relative px-10 lg:px-20 py-20 border-2 border-gray-950'>
+    <div className='bg-outstanding mt-[90px] relative px-10 lg:px-20 py-20 border-2 border-gray-950'>
       <div className='font-bold text-[28px] md:text-[36px] leading-[34px] md:leading-[44px] uppercase pb-20'>
         Hỏi và trả lời
       </div>
@@ -63,7 +67,7 @@ function QuestionsAndAnswers() {
                   {item.answer}
                 </div>
                 <span
-                  className='text-primary-100 italic cursor-pointer'
+                  className='text-primary-100 italic cursor-pointer self-start'
                   onClick={() => toggleExpand(item.id)}
                 >
                   {isExpanded ? 'Thu gọn' : 'Đọc tiếp'}
