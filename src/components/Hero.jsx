@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Hero() {
   return (
-    <div className='h-[700px] xl:h-[934px] bg-dark-brown relative select-none'>
+    <div className='h-[700px] xl:h-[934px] bg-dark-brown relative top-[90px] select-none'>
       <img
         src='/assets/bg1.jpg'
         className='absolute inset-0 w-full h-full object-cover object-right-bottom opacity-40 mix-blend-overlay'

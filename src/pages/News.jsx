@@ -5,6 +5,9 @@ import { GrFormNext } from 'react-icons/gr'
 
 function News() {
   const [listNews, setListNews] = useState([])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const getNews = async () => {
     try {
       const res = await fetch(
@@ -34,7 +37,7 @@ function News() {
     getNews()
   }, [])
   return (
-    <div className='bg-outstanding flex flex-col px-10 md:px-20 pt-[84px] pb-[72px] gap-12 items-center'>
+    <div className='bg-outstanding mt-[90px] flex flex-col px-10 md:px-20 pt-[84px] pb-[72px] gap-12 items-center'>
       <div className='flex flex-wrap gap-12 justify-center'>
         {listNews &&
           listNews.length > 0 &&
