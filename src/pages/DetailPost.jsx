@@ -66,7 +66,7 @@ function DetailPost() {
     <div
       className={
         card && card.length > 0
-          ? 'flex flex-row gap-14 bg-outstanding py-[72px] px-[159px]'
+          ? 'flex flex-row gap-14 bg-outstanding py-[72px] px-[272px]'
           : 'w-full'
       }
     >

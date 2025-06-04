@@ -99,7 +99,9 @@ function UserForm() {
             errors.name ? 'border-red-500' : 'border-gray-300'
           }`}
         />
-        {errors.name && <p className='text-red-500 text-sm'>{errors.name}</p>}
+        {errors.name && (
+          <p className='text-red-500 text-sm mt-1'>{errors.name}</p>
+        )}
       </div>
 
       <div className='flex flex-col sm:flex-row gap-6'>
@@ -116,7 +118,7 @@ function UserForm() {
             }`}
           />
           {errors.phone && (
-            <p className='text-red-500 text-sm'>{errors.phone}</p>
+            <p className='text-red-500 text-sm mt-1'>{errors.phone}</p>
           )}
         </div>
         <div className='w-full sm:w-1/2'>
@@ -132,7 +134,7 @@ function UserForm() {
             }`}
           />
           {errors.email && (
-            <p className='text-red-500 text-sm'>{errors.email}</p>
+            <p className='text-red-500 text-sm mt-1'>{errors.email}</p>
           )}
         </div>
       </div>
@@ -163,7 +165,9 @@ function UserForm() {
           />
         </div>
       </div>
-      {errors.date && <p className='text-red-500 text-sm'>{errors.date}</p>}
+      {errors.date && (
+        <p className='text-red-500 text-sm relative bottom-3'>{errors.date}</p>
+      )}
 
       <div>
         <label className='font-medium'>Địa điểm</label>
@@ -205,7 +209,7 @@ function UserForm() {
           value={form.content}
           onChange={handleChange}
           placeholder='Tôi cần tư vấn về?'
-          className='border p-4 bg-gray-30 rounded-[20px] mt-[8px] outline-none'
+          className='border-2 p-4 bg-gray-30 rounded-[20px] mt-[8px] outline-none focus:border-black'
         />
       </div>
       <button

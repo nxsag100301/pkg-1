@@ -27,13 +27,13 @@ function Footer() {
   return (
     <div className='px-20 py-12 w-full flex flex-col gap-[72px] bg-midnight-100'>
       <div className='flex flex-col lg:flex-row gap-[72px] lg:gap-[126px] lg:items-center justify-center'>
-        <div className=' flex flex-col gap-10 md:gap-6 justify-center items-center'>
+        <div className='flex flex-col gap-10 md:gap-6 justify-center items-center'>
           <img
             src='/assets/logophuckhang.png'
             alt='logo phuc khang'
             className='max-w-[262px] max-h-[164px]'
           />
-          <div className='font-medium text-[20px] leading-8 text-white text-center md:text-left'>
+          <div className='font-base text-[20px] leading-8 text-white text-center md:text-justify  '>
             ĐÁ PHONG THỦY PHÚC KHANG là sự kết hợp giữa ĐÁ và PHONG THỦY mong
             mang đến cho người sở hữu luôn có sức khỏe, phúc lộc và nhiều may
             mắn trong cuộc đời.
