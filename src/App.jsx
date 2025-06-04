@@ -5,6 +5,7 @@ import News from './pages/News'
 import QuestionsAndAnswers from './pages/QuestionsAndAnswers'
 import Footer from './components/Footer'
 import DetailPost from './pages/DetailPost'
+import ListOutstanding from './pages/ListOutstanding'
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
         <Route path='/news' element={<News />} />
         <Route path='/question' element={<QuestionsAndAnswers />} />
         <Route path='/post/:id' element={<DetailPost />} />
+        <Route path='/outstanding/:id' element={<ListOutstanding />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   )
 }

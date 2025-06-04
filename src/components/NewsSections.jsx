@@ -1,6 +1,37 @@
+import { useEffect, useState } from 'react'
 import Card from './Card'
 
 function NewsSections() {
+  const [listNews, setListNews] = useState([])
+  const getNews = async () => {
+    try {
+      const res = await fetch(
+        'https://brandname.phuckhangnet.vn/api/store/StoredProcedure',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            loai: 6,
+            sotrang: 1,
+            soitem: '3',
+            menuparentid: 7,
+            menuid: 7,
+            lang: 'vn'
+          })
+        }
+      )
+      const data = await res.json()
+      if (data.error) {
+        throw new Error(data.error)
+      }
+      setListNews(data.responses)
+    } catch (error) {
+      console.log('error fetch news: ', error.message)
+    }
+  }
+  useEffect(() => {
+    getNews()
+  }, [])
   return (
     <div
       id='news-section'
@@ -11,24 +42,17 @@ function NewsSections() {
         Tin tức
       </div>
       <div className='flex flex-col justify-center items-center md:flex-row md:justify-between gap-9'>
-        <Card
-          image='/assets/card-image.png'
-          title='Thông minh cực rẻ - Kỉ luật mới đắt giá'
-          date='06/02/2025'
-          url='chua co'
-        />
-        <Card
-          image='/assets/card-image.png'
-          title='Phúc Khang Gems và hành trình gieo duyên đến tương lai'
-          date='06/02/2025'
-          url='chua co'
-        />
-        <Card
-          image='/assets/card-image.png'
-          title='Phạm Ngọc Thiên Trang - đưa ứng dụng phong thuỷ vào cuộc sống'
-          date='06/02/2025'
-          url='chua co'
-        />
+        {listNews &&
+          listNews.length > 0 &&
+          listNews.map((news) => (
+            <Card
+              key={news.id}
+              image={`https://brandname.phuckhangnet.vn/ftp_images/${news.avatar}`}
+              title={news.title}
+              date={news.createdate.split(' ')[0]}
+              url={`post/${news.id}`}
+            />
+          ))}
       </div>
     </div>
   )

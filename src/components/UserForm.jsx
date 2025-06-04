@@ -56,8 +56,8 @@ function UserForm() {
         {errors.name && <p className='text-red-500 text-sm'>{errors.name}</p>}
       </div>
 
-      <div className='flex gap-6'>
-        <div className='w-1/2'>
+      <div className='flex flex-col sm:flex-row gap-6'>
+        <div className='w-full sm:w-1/2'>
           <label className='font-medium'>Số điện thoại</label>
           <input
             type='text'
@@ -73,7 +73,7 @@ function UserForm() {
             <p className='text-red-500 text-sm'>{errors.phone}</p>
           )}
         </div>
-        <div className='w-1/2'>
+        <div className='w-full sm:w-1/2'>
           <label className='font-medium'>Email</label>
           <input
             type='text'
@@ -91,8 +91,8 @@ function UserForm() {
         </div>
       </div>
 
-      <div className='flex gap-6'>
-        <div className='w-1/2'>
+      <div className='flex flex-col sm:flex-row gap-6'>
+        <div className='w-full sm:w-1/2'>
           <label className='font-medium'>Từ ngày</label>
           <input
             type='date'
@@ -104,7 +104,7 @@ function UserForm() {
             }`}
           />
         </div>
-        <div className='w-1/2'>
+        <div className='w-full sm:w-1/2'>
           <label className='font-medium'>Đến ngày</label>
           <input
             type='date'
@@ -146,7 +146,7 @@ function UserForm() {
           value={form.content}
           onChange={handleChange}
           placeholder='Tôi cần tư vấn về?'
-          className='border p-4 h-[100px] bg-gray-30 rounded-[20px] outline-none'
+          className='border p-4 bg-gray-30 rounded-[20px] outline-none'
         />
       </div>
       <button

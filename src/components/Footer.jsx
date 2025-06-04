@@ -1,7 +1,10 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 function Footer() {
-  const scollToSection = useCallback((sectionId) => {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const scrollToSection = useCallback((sectionId) => {
     const section = document.getElementById(sectionId)
     if (section) {
       section.scrollIntoView({
@@ -9,51 +12,70 @@ function Footer() {
       })
     }
   }, [])
+  const goToBookingSection = () => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: 'booking' } })
+    } else {
+      scrollToSection('booking')
+    }
+  }
+  useEffect(() => {
+    if (location.pathname === '/' && location.state?.scrollTo) {
+      scrollToSection(location.state.scrollTo)
+    }
+  }, [location, scrollToSection])
   return (
-    <div className='h-[498px] px-20 py-12 flex flex-col gap-[72px] bg-midnight-100'>
-      <div className='w-[1280px] h-[302px] flex flex-row gap-[126px] items-center'>
-        <div className='w-[526px] h-[284px] flex flex-col gap-6 justify-center items-center'>
+    <div className='px-20 py-12 w-full flex flex-col gap-[72px] bg-midnight-100'>
+      <div className='flex flex-col lg:flex-row gap-[72px] lg:gap-[126px] lg:items-center justify-center'>
+        <div className=' flex flex-col gap-10 md:gap-6 justify-center items-center'>
           <img
             src='/assets/logophuckhang.png'
             alt='logo phuc khang'
-            className='w-[262px] h-[164px]'
+            className='max-w-[262px] max-h-[164px]'
           />
-          <div className='font-medium h-[96px] text-[20px] leading-8 text-white'>
+          <div className='font-medium text-[20px] leading-8 text-white text-center md:text-left'>
             ĐÁ PHONG THỦY PHÚC KHANG là sự kết hợp giữa ĐÁ và PHONG THỦY mong
             mang đến cho người sở hữu luôn có sức khỏe, phúc lộc và nhiều may
             mắn trong cuộc đời.
           </div>
         </div>
-        <div className='w-[628px] h-[302px] flex flex-row justify-between gap-[79px]'>
-          <div className='flex flex-col gap-6 w-[252px] h-[302px] '>
+        <div className=' flex flex-col md:flex-row justify-between gap-12 md:gap-[79px]'>
+          <div className='flex flex-col gap-6 items-center md:items-start'>
             <div className='font-medium text-[20px] leading-8 text-white'>
               Khảo sát
             </div>
-            <div className='font-normal text-[16px] text-gray-50 tracking-[0.15px] '>
+            <div className='font-normal text-[16px] text-gray-50 tracking-[0.15px] text-center md:text-start'>
               Sự thật và nhiều cơ hội lớn mở ra, đi cùng là muôn vàn thử thách.
               Khảo sát đã được các chuyên gia lựa chọn cho các vấn đề của bạn và
               cùng Phúc Khang Gems giải quyết ngay!
             </div>
             <div
               className='button font-medium bg-white w-[216px] h-[54px] px-6 py-4 text-[20px] leading-8'
-              onClick={() => scollToSection('booking')}
+              onClick={goToBookingSection}
             >
               Tham gia miễn phí
             </div>
           </div>
-          <div className='w-[308px] h-[168px] flex flex-col gap-6'>
+          <div className='flex flex-col gap-6 items-center md:items-start'>
             <div className='font-medium text-[20px] leading-8 text-white'>
               Liên hệ
             </div>
-            <div className='w-[292px] h-[112px] text-[16px] text-gray-50 leading-7 tracking-[0.15px]'>
-              Hotline:{' '}
-              <span className='font-semibold text-yellow-1'>0938178938</span> |{' '}
-              <span className='font-semibold text-yellow-1'>0939619111</span>{' '}
-              Email:{' '}
-              <span className='font-semibold text-yellow-1'>
-                phuckhanggem@gmail.com
-              </span>{' '}
-              Địa chỉ: D2 Đường 5B HimLam P. Tân Hưng, Quận 7, TP. Hồ Chí Minh
+            <div>
+              <div className='text-[16px] text-gray-50 tracking-[0.15px] flex gap-1'>
+                Hotline:{' '}
+                <span className='font-semibold text-yellow-1'>0938178938</span>{' '}
+                |{' '}
+                <span className='font-semibold text-yellow-1'>0939619111</span>{' '}
+              </div>
+              <div className='text-[16px] text-gray-50 tracking-[0.15px] flex gap-1'>
+                Email:{' '}
+                <span className='font-semibold text-yellow-1'>
+                  phuckhanggem@gmail.com
+                </span>{' '}
+              </div>
+              <div className=' text-[16px] text-gray-50 tracking-[0.15px]'>
+                Địa chỉ: D2 Đường 5B HimLam P. Tân Hưng, Quận 7, TP. Hồ Chí Minh
+              </div>
             </div>
           </div>
         </div>

@@ -35,22 +35,29 @@ export default function Hero() {
       <img
         src='/assets/thientrang.png'
         alt='Thien Trang'
-        className='absolute hidden sm:block top-[200px] xl:top-[234px] left-[200px] md:left-[250px] lg:left-[470px] xl:left-[628px] sm:h-[500px] xl:h-[697px] object-cover z-10'
+        className='absolute hidden sm:block bottom-0 left-[200px] sm:left-[150px] md:left-[250px] lg:left-[470px] xl:left-[628px] sm:h-[460px] xl:h-[697px] object-cover z-10'
       />
-      <div className='absolute top-[660px] sm:top-[640px] md:top-[620px] lg:top-[614px] xl:top-[814px] w-full z-10'>
+      <div className='absolute bottom-0 w-full z-10'>
+        <img
+          src='/assets/vectorfull.png'
+          alt='vector'
+          className='w-full h-full'
+        />
+      </div>
+      {/* <div className='absolute top-[660px] sm:top-[640px] md:top-[620px] lg:top-[614px] xl:top-[814px] w-full z-10'>
         <img
           src='/assets/Vector86.png'
           alt='vector'
           className='w-full h-full'
         />
-      </div>
-      <div className='absolute top-[630px] sm:top-[610px] md:top-[590px] lg:top-[584px] xl:top-[854px] w-full h-[179px] z-20'>
+      </div> */}
+      {/* <div className='absolute top-[630px] sm:top-[610px] md:top-[590px] lg:top-[584px] xl:top-[854px] w-full h-[179px] z-20'>
         <img
           src='/assets/Vector84.png'
           alt='vector3'
           className='w-full h-full'
         />
-      </div>
+      </div> */}
       {/* 
       <div className='absolute top-[938px] left-[-1591px] w-[1495px] h-[174px] -z-10'>
         <img

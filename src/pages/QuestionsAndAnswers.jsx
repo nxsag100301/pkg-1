@@ -2,11 +2,11 @@ import React from 'react'
 
 function QuestionsAndAnswers() {
   return (
-    <div className='bg-outstanding relative px-20 py-20'>
-      <div className='font-bold text-[36px] leading-[44px] uppercase pb-20'>
+    <div className='bg-outstanding relative px-10 lg:px-20 py-20 border-2 border-gray-950'>
+      <div className='font-bold text-[28px] md:text-[36px] leading-[34px] md:leading-[44px] uppercase pb-20'>
         Hỏi và trả lời
       </div>
-      <div className='flex justify-between gap-40'>
+      <div className='flex flex-col xl:flex-row justify-between gap-20 lg:gap-40'>
         <div className='flex flex-col gap-4 max-w-[543px]'>
           <div className='text-midnight-100 text-[24px] leading-[32px] font-semibold'>
             Bị đơn phương chấm dứt hợp đồng lao động vì Covid-19?

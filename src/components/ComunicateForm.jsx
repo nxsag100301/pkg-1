@@ -4,9 +4,9 @@ function ComunicateForm() {
   return (
     <div
       id='booking'
-      className='px-20 flex flex-row justify-between gap-[157px] bg-outstanding h-[1024px] w-full items-center'
+      className='px-10 md:px-20 py-[94px] flex flex-row justify-between gap-[157px] bg-outstanding w-full items-center'
     >
-      <div className='w-[959px] h-[836px] flex flex-col gap-8'>
+      <div className='max-w-[959px] flex flex-col gap-8'>
         <div className='flex flex-col gap-4'>
           <span className='uppercase font-bold text-[36px] leading-[44px]'>
             TRÒ CHUYỆN CÙNG CHUYÊN GIA
@@ -18,29 +18,27 @@ function ComunicateForm() {
             giải và trao đổi.
           </span>
         </div>
-        <div className=' h-[584px]'>
-          <UserForm />
-        </div>
+        <UserForm />
       </div>
-      <div className='w-[164px] h-[800px] flex flex-col gap-12'>
+      <div className='min-w-[164px] hidden lg:flex flex-col gap-12'>
         <img
           src='/assets/chuyengia1.jpg'
           alt='Chuyen gia 1'
           className='rounded-full w-[164px] h-[164px] object-cover'
         />
         <img
-          src='/assets/chuyengia1.jpg'
-          alt='Chuyen gia 1'
+          src='/assets/cg2.png'
+          alt='Chuyen gia 2'
           className='rounded-full w-[164px] h-[164px] object-cover'
         />
         <img
-          src='/assets/chuyengia1.jpg'
-          alt='Chuyen gia 1'
+          src='/assets/cg3.png'
+          alt='Chuyen gia 3'
           className='rounded-full w-[164px] h-[164px] object-cover'
         />
         <img
-          src='/assets/chuyengia1.jpg'
-          alt='Chuyen gia 1'
+          src='/assets/cg4.png'
+          alt='Chuyen gia 4'
           className='rounded-full w-[164px] h-[164px] object-cover'
         />
       </div>
