@@ -118,7 +118,7 @@ export default function Navbar() {
           <div
             className='text-dark-brown bg-white cursor-pointer'
             onClick={() => {
-              scrollToSection('outstanding')
+              goToOutstandingSection()
               setIsOpenMenu(false)
             }}
           >
@@ -127,7 +127,7 @@ export default function Navbar() {
           <span
             className='text-dark-brown cursor-pointer'
             onClick={() => {
-              scrollToSection('partners')
+              goToPartnersSection()
               setIsOpenMenu(false)
             }}
           >

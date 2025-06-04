@@ -35,7 +35,8 @@ export default function Hero() {
       <img
         src='/assets/thientrang.png'
         alt='Thien Trang'
-        className='absolute hidden sm:block bottom-0 left-[200px] sm:left-[150px] md:left-[250px] lg:left-[470px] xl:left-[628px] sm:h-[460px] xl:h-[697px] object-cover z-10'
+        className='absolute hidden sm:block bottom-0 left-[200px] sm:left-[150px] md:left-[250px] 
+        lg:left-[470px] xl:left-[628px] sm:h-[460px] xl:h-[697px] object-cover z-10'
       />
       <div className='absolute bottom-0 w-full z-10'>
         <img
