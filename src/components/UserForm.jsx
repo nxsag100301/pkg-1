@@ -95,7 +95,7 @@ function UserForm() {
           value={form.name}
           onChange={handleChange}
           placeholder='Nhập họ tên'
-          className={`input w-full ${
+          className={`input w-full mt-[8px] ${
             errors.name ? 'border-red-500' : 'border-gray-300'
           }`}
         />
@@ -111,7 +111,7 @@ function UserForm() {
             value={form.phone}
             onChange={handleChange}
             placeholder='Nhập số điện thoại'
-            className={`input w-full ${
+            className={`input mt-[8px] w-full ${
               errors.phone ? 'border-red-500' : 'border-gray-300'
             }`}
           />
@@ -127,7 +127,7 @@ function UserForm() {
             value={form.email}
             onChange={handleChange}
             placeholder='Nhập email'
-            className={`input w-full ${
+            className={`input mt-[8px] w-full ${
               errors.email ? 'border-red-500' : 'border-gray-300'
             }`}
           />
@@ -145,7 +145,7 @@ function UserForm() {
             name='fromDate'
             value={form.fromDate}
             onChange={handleChange}
-            className={`input w-full ${
+            className={`input w-full mt-[8px] ${
               errors.date ? 'border-red-500' : 'border-gray-300'
             }`}
           />
@@ -157,7 +157,7 @@ function UserForm() {
             name='toDate'
             value={form.toDate}
             onChange={handleChange}
-            className={`input w-full ${
+            className={`input w-full mt-[8px] ${
               errors.date ? 'border-red-500' : 'border-gray-300'
             }`}
           />
@@ -171,7 +171,7 @@ function UserForm() {
           name='bookType'
           value={form.bookType}
           onChange={handleChange}
-          className='input w-full border-gray-300'
+          className='input w-full border-gray-300 mt-[8px]'
         >
           <option value='ONLINE'>Hẹn trực tuyến</option>
           <option value='OFFLINE'>Hẹn tại cửa hàng</option>
@@ -188,7 +188,7 @@ function UserForm() {
             value={form.address}
             onChange={handleChange}
             placeholder='Nhập địa chỉ'
-            className={`input w-full ${
+            className={`input w-full mt-[8px] ${
               errors.address ? 'border-red-500' : 'border-gray-300'
             }`}
           />
@@ -205,7 +205,7 @@ function UserForm() {
           value={form.content}
           onChange={handleChange}
           placeholder='Tôi cần tư vấn về?'
-          className='border p-4 bg-gray-30 rounded-[20px] outline-none'
+          className='border p-4 bg-gray-30 rounded-[20px] mt-[8px] outline-none'
         />
       </div>
       <button
