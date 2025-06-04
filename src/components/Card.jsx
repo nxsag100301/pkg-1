@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { FaArrowRight } from 'react-icons/fa'
 
 function Card({ image, title, description, url, date }) {
   const navigate = useNavigate()
@@ -28,10 +29,10 @@ function Card({ image, title, description, url, date }) {
           )}
         </div>
         <div
-          className='flex gap-1 justify-end text-primary cursor-pointer text-[12px] md:text-[14px]'
+          className='flex gap- font-medium gap-1 justify-end text-primary items-center cursor-pointer text-[12px] md:text-[14px]'
           onClick={() => navigate(`/${url}`)}
         >
-          Xem chi tiết &#8594;
+          Xem chi tiết <FaArrowRight className='text-[14px]' />
         </div>
       </div>
     </div>

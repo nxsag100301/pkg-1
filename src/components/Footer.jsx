@@ -44,7 +44,7 @@ function Footer() {
             <div className='font-medium text-[20px] leading-8 text-white'>
               Khảo sát
             </div>
-            <div className='font-normal text-[16px] text-gray-50 tracking-[0.15px] text-center md:text-start'>
+            <div className='font-normal text-[16px] leading-7 text-gray-50 tracking-[0.15px] text-center md:text-start'>
               Sự thật và nhiều cơ hội lớn mở ra, đi cùng là muôn vàn thử thách.
               Khảo sát đã được các chuyên gia lựa chọn cho các vấn đề của bạn và
               cùng Phúc Khang Gems giải quyết ngay!
@@ -61,19 +61,19 @@ function Footer() {
               Liên hệ
             </div>
             <div>
-              <div className='text-[16px] text-gray-50 tracking-[0.15px] flex gap-1'>
+              <div className='text-[16px] text-gray-50 leading-7 tracking-[0.15px] flex gap-1'>
                 Hotline:{' '}
-                <span className='font-semibold text-yellow-1'>0938178938</span>{' '}
+                <span className='font-semibold  text-yellow-1'>0938178938</span>{' '}
                 |{' '}
                 <span className='font-semibold text-yellow-1'>0939619111</span>{' '}
               </div>
-              <div className='text-[16px] text-gray-50 tracking-[0.15px] flex gap-1'>
+              <div className='text-[16px] text-gray-50 leading-7 tracking-[0.15px] flex gap-1'>
                 Email:{' '}
                 <span className='font-semibold text-yellow-1'>
                   phuckhanggem@gmail.com
                 </span>{' '}
               </div>
-              <div className=' text-[16px] text-gray-50 tracking-[0.15px]'>
+              <div className='text-[16px] text-gray-50 leading-7 tracking-[0.15px]'>
                 Địa chỉ: D2 Đường 5B HimLam P. Tân Hưng, Quận 7, TP. Hồ Chí Minh
               </div>
             </div>
