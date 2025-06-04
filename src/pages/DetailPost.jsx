@@ -6,6 +6,9 @@ function DetailPost() {
   const { id } = useParams()
   const [listNews, setListNews] = useState()
   const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const getNews = async (id) => {
     try {
       setLoading(true)

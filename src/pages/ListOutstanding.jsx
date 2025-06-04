@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 function ListOutstanding() {
   const { id } = useParams()
   const [listNews, setListNews] = useState([])
+  console.log('check listNews', listNews)
   const getNews = async (id) => {
     try {
       switch (id) {
@@ -39,7 +40,7 @@ function ListOutstanding() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                  loai: 61,
+                  loai: 6,
                   sotrang: 1,
                   menuid: '20',
                   soitem: 9,

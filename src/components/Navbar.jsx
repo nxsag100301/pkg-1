@@ -26,6 +26,22 @@ export default function Navbar() {
     }
   }
 
+  const goToOutstandingSection = () => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: 'outstanding' } })
+    } else {
+      scrollToSection('outstanding')
+    }
+  }
+
+  const goToPartnersSection = () => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: 'partners' } })
+    } else {
+      scrollToSection('partners')
+    }
+  }
+
   useEffect(() => {
     if (location.pathname === '/' && location.state?.scrollTo) {
       scrollToSection(location.state.scrollTo)
@@ -58,13 +74,13 @@ export default function Navbar() {
         <div className='hidden lg:flex flex-row gap-[72px] items-center'>
           <span
             className='text-white cursor-pointer'
-            onClick={() => scrollToSection('outstanding')}
+            onClick={goToOutstandingSection}
           >
             Nổi bật
           </span>
           <span
             className='text-white cursor-pointer'
-            onClick={() => scrollToSection('partners')}
+            onClick={goToPartnersSection}
           >
             Khách hàng
           </span>
