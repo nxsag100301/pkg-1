@@ -138,7 +138,7 @@ function UserForm() {
       </div>
 
       <div className='flex flex-col sm:flex-row gap-6'>
-        <div className='w-full sm:w-1/2'>
+        <div className='w-full sm:w-1/2 flex flex-col'>
           <label className='font-medium'>Từ ngày</label>
           <input
             type='date'
@@ -150,7 +150,7 @@ function UserForm() {
             }`}
           />
         </div>
-        <div className='w-full sm:w-1/2'>
+        <div className='w-full sm:w-1/2 flex flex-col'>
           <label className='font-medium'>Đến ngày</label>
           <input
             type='date'
