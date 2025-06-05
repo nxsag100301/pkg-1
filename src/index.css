@@ -18,5 +18,5 @@ body {
 }
 
 .input {
-  @apply border p-4 h-[60px] bg-gray-30 rounded-[20px] focus:border-black;
+  @apply border p-4 h-[60px] bg-gray-30 rounded-[20px] focus:border-black focus:outline-black;
 }
