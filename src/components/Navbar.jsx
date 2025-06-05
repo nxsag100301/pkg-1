@@ -64,16 +64,28 @@ export default function Navbar() {
 
   // 👇 Logic ẩn/hiện Navbar khi cuộn
   useEffect(() => {
+    let lastScrollY = window.scrollY
+
     const handleScroll = () => {
-      if (window.scrollY < 200) {
-        // Khi đang gần trên cùng trang (có thể đặt ngưỡng 200px)
+      const currentY = window.scrollY
+
+      if (currentY < 200) {
+        // Luôn hiện navbar khi scroll lên gần top
         setShowNavbar(true)
       } else {
-        // Khi scroll xuống dưới 200px thì ẩn navbar
-        setShowNavbar(false)
+        if (currentY > lastScrollY) {
+          // Cuộn xuống thì ẩn navbar
+          setShowNavbar(false)
+        } else {
+          // Cuộn lên thì hiện navbar
+          setShowNavbar(true)
+        }
       }
+      lastScrollY = currentY
     }
+
     window.addEventListener('scroll', handleScroll)
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
