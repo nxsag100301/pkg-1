@@ -66,8 +66,7 @@ function UserForm() {
       color: '#9ca3af' // gray-400
     }),
     indicatorsContainer: (base) => ({
-      ...base,
-      paddingRight: '8px'
+      ...base
     })
   }
 
@@ -245,7 +244,7 @@ function UserForm() {
               errors.date ? 'border-red-500' : 'border-gray-300'
             }`}
           />
-          <FaCalendarAlt className='absolute right-4 bottom-5' />
+          <FaCalendarAlt className='absolute right-7 bottom-5' />
         </div>
 
         <div className='w-full sm:w-1/2 flex flex-col relative'>
@@ -261,7 +260,7 @@ function UserForm() {
               errors.date ? 'border-red-500' : 'border-gray-300'
             }`}
           />
-          <FaCalendarAlt className='absolute right-4 bottom-5' />
+          <FaCalendarAlt className='absolute right-7 bottom-5' />
         </div>
       </div>
       {errors.date && (
