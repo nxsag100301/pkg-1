@@ -66,7 +66,27 @@ function UserForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setForm({ ...form, [name]: value })
+
+    // Nếu cập nhật toDate và nó nhỏ hơn fromDate, không cho phép
+    if (name === 'toDate' && form.fromDate && value < form.fromDate) {
+      toast.error('Ngày hẹn không được nhỏ hơn ngày hiện tại!')
+      return // hoặc set error/toast thông báo
+    }
+
+    // Nếu cập nhật fromDate và toDate đã có, kiểm tra lại toDate
+    if (name === 'fromDate' && form.toDate && form.toDate < value) {
+      setForm((prev) => ({
+        ...prev,
+        [name]: value,
+        toDate: value // cập nhật toDate để không bị nhỏ hơn
+      }))
+      return
+    }
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value
+    }))
   }
 
   const validate = () => {
