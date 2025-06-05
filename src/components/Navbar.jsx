@@ -5,6 +5,8 @@ import { IoMdClose } from 'react-icons/io'
 
 export default function Navbar() {
   const [isOpenMenu, setIsOpenMenu] = useState(false)
+  const [showNavbar, setShowNavbar] = useState(true)
+  const lastScrollY = useRef(0)
   const navigate = useNavigate()
   const location = useLocation()
   const menuRef = useRef(null)
@@ -12,9 +14,7 @@ export default function Navbar() {
   const scrollToSection = useCallback((sectionId) => {
     const section = document.getElementById(sectionId)
     if (section) {
-      section.scrollIntoView({
-        behavior: 'smooth'
-      })
+      section.scrollIntoView({ behavior: 'smooth' })
     }
   }, [])
 
@@ -62,8 +62,30 @@ export default function Navbar() {
     }
   }, [isOpenMenu])
 
+  // 👇 Logic ẩn/hiện Navbar khi cuộn
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY
+      if (currentY > lastScrollY.current) {
+        setShowNavbar(false) // cuộn xuống
+      } else {
+        setShowNavbar(true) // cuộn lên
+      }
+      lastScrollY.current = currentY
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
-    <div className='fixed top-0 left-0 z-20 h-[90px] w-full flex flex-row items-center justify-between bg-primary py-6 px-6 sm:px-20'>
+    <div
+      className={`fixed top-0 left-0 z-20 h-[90px] w-full flex flex-row items-center justify-between bg-primary py-6 px-6 sm:px-20 transition-transform duration-300 ${
+        showNavbar ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       <div className='h-[70px] flex flex-row gap-[72px] items-center'>
         <img
           src='/assets/logophuckhang.png'
@@ -104,12 +126,14 @@ export default function Navbar() {
           </span>
         </div>
       </div>
+
       <div
         className='button !hidden lg:!flex text-primary text-[20px] leading-[32px] font-medium font-jakarta bg-white h-[52px] w-40'
         onClick={goToBookingSection}
       >
         Đặt lịch
       </div>
+
       {isOpenMenu && (
         <div
           ref={menuRef}
@@ -162,6 +186,7 @@ export default function Navbar() {
           </span>
         </div>
       )}
+
       <div className='lg:hidden'>
         {isOpenMenu ? (
           <IoMdClose

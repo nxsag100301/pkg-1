@@ -28,8 +28,8 @@ function Partners() {
         className='absolute w-full h-full opacity-20 object-cover select-none'
       />
 
-      <div className='relative z-10 py-14 flex flex-col gap-[58px] w-full h-full items-center px-5'>
-        <div className='font-bold text-[25px] md:text-[36px] leading-[44px] text-white uppercase'>
+      <div className='relative z-10 py-14 flex flex-col gap-[58px] w-full h-full items-center justify-center px-5'>
+        <div className='font-bold text-[25px] md:text-[36px] leading-[44px] text-white uppercase pt-4'>
           Đối tác tin cậy
         </div>
         <Swiper
