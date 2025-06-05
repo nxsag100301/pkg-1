@@ -42,7 +42,7 @@ function QuestionsAndAnswers() {
     getQA()
   }, [])
   return (
-    <div className='bg-outstanding mt-[90px] relative px-10 lg:px-20 py-20 border-2 border-gray-950'>
+    <div className='bg-outstanding pt-[90px] relative px-10 lg:px-20 py-20 border-2 border-gray-950'>
       <div className='font-bold text-[28px] md:text-[36px] leading-[34px] md:leading-[44px] uppercase pb-20'>
         Hỏi và trả lời
       </div>
