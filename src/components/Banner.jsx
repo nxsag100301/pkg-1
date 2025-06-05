@@ -35,9 +35,9 @@ function Banner() {
                 />
                 <div className='absolute inset-0 flex items-center justify-center'>
                   <p className='text-primary-100 text-[10px] leading-3  sm:text-[18px] sm:leading-8 font-medium text-center'>
-                    <div className='text-primary-100 text-[16px] leading-5 sm:text-[48px] sm:leading-[56px] font-bold'>
+                    <span className='text-primary-100 block text-[16px] leading-5 sm:text-[48px] sm:leading-[56px] font-bold'>
                       {trustedCustomer} +
-                    </div>
+                    </span>
                     Khách hàng tin tưởng
                   </p>
                 </div>

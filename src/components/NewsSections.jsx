@@ -35,9 +35,9 @@ function NewsSections() {
   return (
     <div
       id='news-section'
-      className='flex flex-col max-w-full gap-[50px] md:gap-[72px] bg-outstanding pt-[96px] pb-[80px]'
+      className='flex flex-col max-w-full gap-[50px] md:gap-[72px] bg-outstanding pt-[96px] pb-[80px] xl:px-[80px]'
     >
-      <div className='flex justify-center xl:pl-[80px] xl:justify-start uppercase font-bold text-[20px] md:text-[36px] leading-[44px]'>
+      <div className='flex justify-center 2xl:pl-[50px] 2xl:justify-start uppercase font-bold text-[20px] md:text-[36px] leading-[44px]'>
         Tin tức
       </div>
       <div className='flex flex-col flex-wrap justify-center items-center lg:flex-row gap-9'>

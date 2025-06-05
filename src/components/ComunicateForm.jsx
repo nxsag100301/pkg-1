@@ -24,22 +24,22 @@ function ComunicateForm() {
         <img
           src='/assets/chuyengia1.jpg'
           alt='Chuyen gia 1'
-          className='rounded-full w-[164px] h-[164px] object-cover'
+          className='rounded-full w-[164px] h-[164px]  object-cover object-[center_20%]'
         />
         <img
           src='/assets/cg2.png'
           alt='Chuyen gia 2'
-          className='rounded-full w-[164px] h-[164px] object-cover'
+          className='rounded-full w-[164px] h-[164px] object-cover object-[center_20%]'
         />
         <img
           src='/assets/cg3.png'
           alt='Chuyen gia 3'
-          className='rounded-full w-[164px] h-[164px] object-cover'
+          className='rounded-full w-[164px] h-[164px] object-cover object-[center_20%]'
         />
         <img
           src='/assets/cg4.png'
           alt='Chuyen gia 4'
-          className='rounded-full w-[164px] h-[164px] object-cover'
+          className='rounded-full w-[164px] h-[164px] object-cover object-[center_20%]'
         />
       </div>
     </div>

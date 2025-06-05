@@ -33,7 +33,7 @@ export default function Outstanding() {
   return (
     <div
       id='outstanding'
-      className='flex flex-col max-w-full gap-[50px] md:gap-[72px] bg-outstanding pt-[96px] pb-[80px]'
+      className='flex flex-col max-w-full gap-[50px] md:gap-[72px] bg-outstanding pt-[96px] pb-[80px] xl:px-[80px]'
     >
       <div className='flex justify-center uppercase font-bold text-[20px] md:text-[36px] leading-[44px]'>
         Nổi bật

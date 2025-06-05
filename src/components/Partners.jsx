@@ -42,7 +42,7 @@ function Partners() {
             320: { slidesPerView: 3 },
             640: { slidesPerView: 4 },
             768: { slidesPerView: 5 },
-            1024: { slidesPerView: 8 }
+            1024: { slidesPerView: 6 }
           }}
           className='w-full max-w-[1262px] h-full flex'
         >
@@ -51,7 +51,7 @@ function Partners() {
               <img
                 src={`/assets/partners/${file}`}
                 alt={`partner-${index}`}
-                className='px-3 transition-transform duration-300 hover:scale-110 object-fit w-full h-[80px]'
+                className='px-3 transition-transform duration-300 hover:scale-110 object-contain w-full h-[80px]'
               />
             </SwiperSlide>
           ))}

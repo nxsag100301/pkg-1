@@ -171,7 +171,7 @@ function UserForm() {
             name='toDate'
             value={form.toDate}
             onChange={handleChange}
-            min={new Date().toISOString().split('T')[0]}
+            min={form.fromDate || new Date().toISOString().split('T')[0]}
             className={`input w-full mt-[8px] ${
               errors.date ? 'border-red-500' : 'border-gray-300'
             }`}
