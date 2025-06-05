@@ -82,8 +82,10 @@ export default function Navbar() {
 
   return (
     <div
-      className={`sticky top-0 left-0 z-20 h-[90px] w-full flex flex-row items-center justify-between bg-primary py-6 px-6 sm:px-20 transition-transform duration-300 ${
-        showNavbar ? 'translate-y-0' : '-translate-y-full'
+      className={`sticky top-0 left-0 z-20 w-full flex items-center justify-between bg-primary py-6 px-6 sm:px-20 transition-all duration-300 ${
+        showNavbar
+          ? 'h-[90px] translate-y-0'
+          : 'h-0 translate-y-[-90px] overflow-hidden'
       }`}
     >
       <div className='h-[70px] flex flex-row gap-[72px] items-center'>
