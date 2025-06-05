@@ -5,7 +5,7 @@ import { IoMdClose } from 'react-icons/io'
 
 export default function Navbar() {
   const [isOpenMenu, setIsOpenMenu] = useState(false)
-  const [showNavbar, setShowNavbar] = useState(true)
+  // const [showNavbar, setShowNavbar] = useState(true)
   // const lastScrollY = useRef(0)
   const navigate = useNavigate()
   const location = useLocation()
@@ -62,43 +62,44 @@ export default function Navbar() {
     }
   }, [isOpenMenu])
 
-  // 👇 Logic ẩn/hiện Navbar khi cuộn
-  useEffect(() => {
-    let lastScrollY = window.scrollY
+  // // 👇 Logic ẩn/hiện Navbar khi cuộn
+  // useEffect(() => {
+  //   let lastScrollY = window.scrollY
 
-    const handleScroll = () => {
-      const currentY = window.scrollY
+  //   const handleScroll = () => {
+  //     const currentY = window.scrollY
 
-      if (currentY < 200) {
-        // Luôn hiện navbar khi scroll lên gần top
-        setShowNavbar(true)
-      } else {
-        if (currentY > lastScrollY) {
-          // Cuộn xuống thì ẩn navbar
-          setShowNavbar(false)
-        } else {
-          // Cuộn lên thì hiện navbar
-          setShowNavbar(true)
-        }
-      }
-      lastScrollY = currentY
-    }
+  //     if (currentY < 200) {
+  //       // Luôn hiện navbar khi scroll lên gần top
+  //       setShowNavbar(true)
+  //     } else {
+  //       if (currentY > lastScrollY) {
+  //         // Cuộn xuống thì ẩn navbar
+  //         setShowNavbar(false)
+  //       } else {
+  //         // Cuộn lên thì hiện navbar
+  //         setShowNavbar(true)
+  //       }
+  //     }
+  //     lastScrollY = currentY
+  //   }
 
-    window.addEventListener('scroll', handleScroll)
+  //   window.addEventListener('scroll', handleScroll)
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll)
+  //   }
+  // }, [])
 
   return (
-    <div
-      className={`sticky top-0 left-0 z-20 w-full flex items-center justify-between bg-primary py-6 px-6 sm:px-20 transition-all duration-300 ${
-        showNavbar
-          ? 'h-[90px] translate-y-0'
-          : 'h-0 translate-y-[-90px] overflow-hidden'
-      }`}
-    >
+    // <div
+    //   className={`sticky top-0 left-0 z-20 w-full flex items-center justify-between bg-primary py-6 px-6 sm:px-20 transition-all duration-300 ${
+    //     showNavbar
+    //       ? 'h-[90px] translate-y-0'
+    //       : 'h-0 translate-y-[-90px] overflow-hidden'
+    //   }`}
+    // >
+    <div className='sticky top-0 left-0 z-20 w-full flex items-center justify-between bg-primary py-6 px-6 sm:px-20 transition-all duration-300 h-[90px]'>
       <div className='h-[70px] flex flex-row gap-[72px] items-center'>
         <img
           src='/assets/logophuckhang.png'
