@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { RiArrowDropDownLine } from 'react-icons/ri'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { FaCalendarAlt } from 'react-icons/fa'
 
 function UserForm() {
   const [form, setForm] = useState({
     name: '',
     phone: '',
     email: '',
-    fromDate: '',
-    toDate: '',
+    fromDate: null,
+    toDate: null,
     bookType: 'ONLINE',
     address: '',
     content: ''
@@ -41,18 +44,17 @@ function UserForm() {
         }
       )
       const data = await res.json()
-      if (data.error) {
-        throw new Error(data.error)
-      }
+      if (data.error) throw new Error(data.error)
+
       if (data.message === 'success' && data.statuscode === 200) {
         toast.success('Đặt hẹn thành công!')
         setForm({
           name: '',
           phone: '',
           email: '',
-          fromDate: '',
-          toDate: '',
-          bookType: '',
+          fromDate: null,
+          toDate: null,
+          bookType: 'ONLINE',
           address: '',
           content: ''
         })
@@ -60,29 +62,12 @@ function UserForm() {
         toast.error('Đặt hẹn thất bại, có lỗi xảy ra!')
       }
     } catch (error) {
-      console.log('error fetch news: ', error.message)
+      console.log('error fetch booking: ', error.message)
     }
   }
 
   const handleChange = (e) => {
     const { name, value } = e.target
-
-    // Nếu cập nhật toDate và nó nhỏ hơn fromDate, không cho phép
-    if (name === 'toDate' && form.fromDate && value < form.fromDate) {
-      toast.error('Ngày hẹn không được nhỏ hơn ngày hiện tại!')
-      return // hoặc set error/toast thông báo
-    }
-
-    // Nếu cập nhật fromDate và toDate đã có, kiểm tra lại toDate
-    if (name === 'fromDate' && form.toDate && form.toDate < value) {
-      setForm((prev) => ({
-        ...prev,
-        [name]: value,
-        toDate: value // cập nhật toDate để không bị nhỏ hơn
-      }))
-      return
-    }
-
     setForm((prev) => ({
       ...prev,
       [name]: value
@@ -97,6 +82,8 @@ function UserForm() {
     else if (!/\S+@\S+\.\S+/.test(form.email))
       newErrors.email = 'Email không hợp lệ'
     if (!form.fromDate || !form.toDate) newErrors.date = 'Vui lòng chọn ngày'
+    else if (form.fromDate > form.toDate)
+      newErrors.date = 'Ngày kết thúc không được nhỏ hơn ngày bắt đầu'
     if (form.bookType === 'ADDRESS' && !form.address)
       newErrors.address = 'Vui lòng nhập địa chỉ hẹn'
 
@@ -104,10 +91,28 @@ function UserForm() {
     return Object.keys(newErrors).length === 0
   }
 
+  const formatDate = (date) => {
+    if (!date) return ''
+    const d = new Date(date)
+    const day = String(d.getDate()).padStart(2, '0')
+    const month = String(d.getMonth() + 1).padStart(2, '0')
+    const year = d.getFullYear()
+    return `${day}/${month}/${year}`
+  }
+
   const handleSubmit = (e) => {
+    console.log('check form: ', {
+      ...form,
+      fromDate: formatDate(form.fromDate),
+      toDate: formatDate(form.toDate)
+    })
     e.preventDefault()
     if (validate()) {
-      sendBooking(form)
+      sendBooking({
+        ...form,
+        fromDate: formatDate(form.fromDate),
+        toDate: formatDate(form.toDate)
+      })
     }
   }
 
@@ -171,32 +176,40 @@ function UserForm() {
       </div>
 
       <div className='flex flex-col sm:flex-row gap-6'>
-        <div className='w-full sm:w-1/2 flex flex-col'>
+        <div className='w-full sm:w-1/2 flex flex-col relative'>
           <label className='font-medium'>Từ ngày</label>
-          <input
-            type='date'
-            name='fromDate'
-            value={form.fromDate}
-            onChange={handleChange}
-            min={new Date().toISOString().split('T')[0]}
+          <DatePicker
+            selected={form.fromDate}
+            onChange={(date) =>
+              setForm((prev) => ({
+                ...prev,
+                fromDate: date,
+                toDate: form.toDate && form.toDate < date ? date : form.toDate
+              }))
+            }
+            minDate={new Date()}
+            dateFormat='dd/MM/yyyy'
+            placeholderText='Chọn ngày bắt đầu'
             className={`input w-full mt-[8px] ${
               errors.date ? 'border-red-500' : 'border-gray-300'
             }`}
           />
+          <FaCalendarAlt className='absolute right-4 bottom-5' />
         </div>
-        <div className='w-full sm:w-1/2 flex flex-col'>
+        <div className='w-full sm:w-1/2 flex flex-col relative'>
           <label className='font-medium'>Đến ngày</label>
-          <input
-            type='date'
-            name='toDate'
-            value={form.toDate}
-            onChange={handleChange}
+          <DatePicker
+            selected={form.toDate}
+            onChange={(date) => setForm((prev) => ({ ...prev, toDate: date }))}
+            minDate={form.fromDate || new Date()}
             disabled={!form.fromDate}
-            min={form.fromDate || new Date().toISOString().split('T')[0]}
+            dateFormat='dd/MM/yyyy'
+            placeholderText='Chọn ngày kết thúc'
             className={`input w-full mt-[8px] ${
               errors.date ? 'border-red-500' : 'border-gray-300'
             }`}
           />
+          <FaCalendarAlt className='absolute right-4 bottom-5' />
         </div>
       </div>
       {errors.date && (
