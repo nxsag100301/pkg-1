@@ -7,8 +7,10 @@ function Banner() {
   const counterRef = useRef(null)
 
   useEffect(() => {
-    const random = Math.floor(Math.random() * 1000)
-    setTargetNumber(random + 1000)
+    const lastNumber = parseInt(localStorage.getItem('trustedCustomer')) || 1000
+    const newTarget = lastNumber + 500
+    setTargetNumber(newTarget)
+    localStorage.setItem('trustedCustomer', newTarget)
   }, [])
 
   useEffect(() => {

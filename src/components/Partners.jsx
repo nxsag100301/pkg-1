@@ -51,7 +51,7 @@ function Partners() {
               <img
                 src={`/assets/partners/${file}`}
                 alt={`partner-${index}`}
-                className='px-3 transition-transform duration-300 hover:scale-110 object-contain w-full h-[80px]'
+                className='px-3 transition-transform duration-300 hover:scale-110 object-cover lg:object-contain w-full h-[80px]'
               />
             </SwiperSlide>
           ))}

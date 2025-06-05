@@ -147,10 +147,18 @@ function UserForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target
+
     setForm((prev) => ({
       ...prev,
       [name]: value
     }))
+
+    // Xóa lỗi tương ứng nếu có
+    setErrors((prev) => {
+      const updatedErrors = { ...prev }
+      delete updatedErrors[name]
+      return updatedErrors
+    })
   }
 
   const handleSubmit = (e) => {
@@ -189,13 +197,20 @@ function UserForm() {
         <div className='w-full sm:w-1/2'>
           <label className='font-medium'>Số điện thoại</label>
           <input
-            type='text'
+            type='tel'
             name='phone'
             value={form.phone}
             onChange={(e) => {
               const value = e.target.value
               if (/^\d*$/.test(value)) {
                 handleChange(e)
+                if (value.length === 10) {
+                  setErrors((prev) => {
+                    const updatedErrors = { ...prev }
+                    delete updatedErrors.phone
+                    return updatedErrors
+                  })
+                }
               }
             }}
             placeholder='Nhập số điện thoại'
@@ -210,10 +225,20 @@ function UserForm() {
         <div className='w-full sm:w-1/2'>
           <label className='font-medium'>Email</label>
           <input
-            type='text'
+            type='email'
             name='email'
             value={form.email}
-            onChange={handleChange}
+            onChange={(e) => {
+              handleChange(e)
+              const value = e.target.value
+              if (/\S+@\S+\.\S+/.test(value)) {
+                setErrors((prev) => {
+                  const updatedErrors = { ...prev }
+                  delete updatedErrors.email
+                  return updatedErrors
+                })
+              }
+            }}
             placeholder='Nhập email'
             className={`input mt-[8px] w-full ${
               errors.email ? 'border-red-500' : 'border-gray-300'
@@ -230,13 +255,30 @@ function UserForm() {
           <label className='font-medium'>Từ ngày</label>
           <DatePicker
             selected={form.fromDate}
-            onChange={(date) =>
-              setForm((prev) => ({
-                ...prev,
-                fromDate: date,
-                toDate: prev.toDate && prev.toDate < date ? date : prev.toDate
-              }))
-            }
+            onChange={(date) => {
+              setForm((prev) => {
+                const newFromDate = date
+                const newToDate =
+                  prev.toDate && prev.toDate < newFromDate
+                    ? newFromDate
+                    : prev.toDate
+
+                // validate lỗi ngày nếu hợp lệ thì xóa lỗi
+                if (newFromDate && newToDate && newFromDate <= newToDate) {
+                  setErrors((prevErr) => {
+                    const newErr = { ...prevErr }
+                    delete newErr.date
+                    return newErr
+                  })
+                }
+
+                return {
+                  ...prev,
+                  fromDate: newFromDate,
+                  toDate: newToDate
+                }
+              })
+            }}
             minDate={new Date()}
             dateFormat='dd/MM/yyyy'
             placeholderText='Chọn ngày bắt đầu'
@@ -255,7 +297,25 @@ function UserForm() {
           <label className='font-medium'>Đến ngày</label>
           <DatePicker
             selected={form.toDate}
-            onChange={(date) => setForm((prev) => ({ ...prev, toDate: date }))}
+            onChange={(date) => {
+              setForm((prev) => {
+                const newFromDate = prev.fromDate
+                const newToDate = date
+
+                if (newFromDate && newToDate && newFromDate <= newToDate) {
+                  setErrors((prevErr) => {
+                    const newErr = { ...prevErr }
+                    delete newErr.date
+                    return newErr
+                  })
+                }
+
+                return {
+                  ...prev,
+                  toDate: newToDate
+                }
+              })
+            }}
             minDate={form.fromDate || new Date()}
             disabled={!form.fromDate}
             dateFormat='dd/MM/yyyy'
@@ -284,12 +344,17 @@ function UserForm() {
           }}
           options={bookTypeOptions}
           value={bookTypeOptions.find((opt) => opt.value === form.bookType)}
-          onChange={(selectedOption) =>
+          onChange={(selectedOption) => {
             setForm((prev) => ({
               ...prev,
               bookType: selectedOption.value
             }))
-          }
+            setErrors((prev) => {
+              const updatedErrors = { ...prev }
+              delete updatedErrors.bookType
+              return updatedErrors
+            })
+          }}
           styles={customSelectStyles}
           classNamePrefix={
             errors.bookType ? 'react-select-error' : 'react-select'

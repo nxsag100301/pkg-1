@@ -6,6 +6,7 @@ import QuestionsAndAnswers from './pages/QuestionsAndAnswers'
 import Footer from './components/Footer'
 import DetailPost from './pages/DetailPost'
 import ListOutstanding from './pages/ListOutstanding'
+import NotFound from './pages/NotFound'
 import { ToastContainer } from 'react-toastify'
 
 // https://pkg-1.vercel.app/
@@ -16,6 +17,7 @@ function App() {
       <ToastContainer position='top-right' autoClose={1500} theme='light' />
       <Navbar />
       <Routes>
+        <Route path='*' element={<NotFound />} />
         <Route path='/' element={<Home />} />
         <Route path='/news' element={<News />} />
         <Route path='/question' element={<QuestionsAndAnswers />} />

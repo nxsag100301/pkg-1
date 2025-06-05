@@ -42,7 +42,7 @@ function QuestionsAndAnswers() {
     getQA()
   }, [])
   return (
-    <div className='bg-outstanding relative px-10 lg:px-20 py-20 border-2 border-gray-950'>
+    <div className='bg-outstanding mt-[90px] relative px-10 lg:px-20 py-20 border-2 border-gray-950'>
       <div className='font-bold text-[28px] md:text-[36px] leading-[34px] md:leading-[44px] uppercase pb-20'>
         Hỏi và trả lời
       </div>
@@ -52,8 +52,11 @@ function QuestionsAndAnswers() {
           listQA.map((item) => {
             const isExpanded = expandedIds.includes(item.id)
             return (
-              <div key={item.id} className='flex flex-col gap-4 max-w-[543px]'>
-                <div className='text-midnight-100 text-[24px] leading-[32px] font-semibold'>
+              <div
+                key={item.id}
+                className='flex flex-col gap-4 xl:max-w-[543px]'
+              >
+                <div className='text-midnight-100 text-[24px] leading-[32px] font-semibold text-justify'>
                   {item.question}
                 </div>
                 <div className='font-medium text-[16px] leading-6 tracking-[0.15px] text-gray-70'>
@@ -61,7 +64,9 @@ function QuestionsAndAnswers() {
                 </div>
                 <div
                   className={`text-[20px] leading-[32px] text-gray-90 relative ${
-                    isExpanded ? '' : 'max-h-[200px] overflow-hidden'
+                    isExpanded
+                      ? ''
+                      : 'max-h-[200px] overflow-hidden text-justify'
                   }`}
                 >
                   {item.answer}
