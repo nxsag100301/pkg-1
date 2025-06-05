@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 import DatePicker from 'react-datepicker'
 import Select from 'react-select'
-import { FaCalendarAlt } from 'react-icons/fa'
+// import { FaCalendarAlt } from 'react-icons/fa'
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import 'react-datepicker/dist/react-datepicker.css'
 // eslint-disable-next-line no-unused-vars
@@ -244,7 +244,11 @@ function UserForm() {
               errors.date ? 'border-red-500' : 'border-gray-300'
             }`}
           />
-          <FaCalendarAlt className='absolute right-7 bottom-5' />
+          {/* <FaCalendarAlt className='absolute right-7 bottom-5' /> */}
+          <img
+            src='/assets/calendar.png'
+            className='absolute right-7 bottom-5 w-[17px] h-[17px]'
+          />
         </div>
 
         <div className='w-full sm:w-1/2 flex flex-col relative'>
@@ -260,7 +264,11 @@ function UserForm() {
               errors.date ? 'border-red-500' : 'border-gray-300'
             }`}
           />
-          <FaCalendarAlt className='absolute right-7 bottom-5' />
+          {/* <FaCalendarAlt className='absolute right-7 bottom-5' /> */}
+          <img
+            src='/assets/calendar.png'
+            className='absolute right-7 bottom-5 w-[17px] h-[17px]'
+          />
         </div>
       </div>
       {errors.date && (
@@ -325,7 +333,7 @@ function UserForm() {
 
       <button
         type='submit'
-        className='button bg-primary w-full h-[60px] text-white rounded-lg'
+        className='button bg-primary w-full h-[60px] text-white rounded-lg hover:opacity-90'
       >
         Đặt hẹn
       </button>
