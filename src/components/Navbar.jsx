@@ -6,7 +6,7 @@ import { IoMdClose } from 'react-icons/io'
 export default function Navbar() {
   const [isOpenMenu, setIsOpenMenu] = useState(false)
   const [showNavbar, setShowNavbar] = useState(true)
-  const lastScrollY = useRef(0)
+  // const lastScrollY = useRef(0)
   const navigate = useNavigate()
   const location = useLocation()
   const menuRef = useRef(null)
@@ -65,15 +65,14 @@ export default function Navbar() {
   // 👇 Logic ẩn/hiện Navbar khi cuộn
   useEffect(() => {
     const handleScroll = () => {
-      const currentY = window.scrollY
-      if (currentY > lastScrollY.current) {
-        setShowNavbar(false) // cuộn xuống
+      if (window.scrollY < 200) {
+        // Khi đang gần trên cùng trang (có thể đặt ngưỡng 200px)
+        setShowNavbar(true)
       } else {
-        setShowNavbar(true) // cuộn lên
+        // Khi scroll xuống dưới 200px thì ẩn navbar
+        setShowNavbar(false)
       }
-      lastScrollY.current = currentY
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => {
       window.removeEventListener('scroll', handleScroll)
