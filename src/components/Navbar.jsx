@@ -82,7 +82,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`fixed top-0 left-0 z-20 h-[90px] w-full flex flex-row items-center justify-between bg-primary py-6 px-6 sm:px-20 transition-transform duration-300 ${
+      className={`sticky top-0 left-0 z-20 h-[90px] w-full flex flex-row items-center justify-between bg-primary py-6 px-6 sm:px-20 transition-transform duration-300 ${
         showNavbar ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
