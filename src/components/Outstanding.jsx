@@ -33,13 +33,12 @@ export default function Outstanding() {
   return (
     <div
       id='outstanding'
-      className='flex flex-col max-w-full gap-[50px] md:gap-[72px] bg-outstanding pt-[96px] 
-      px-[80px] pb-[80px]'
+      className='flex flex-col max-w-full gap-[50px] md:gap-[72px] bg-outstanding pt-[96px] pb-[80px]'
     >
       <div className='flex justify-center uppercase font-bold text-[20px] md:text-[36px] leading-[44px]'>
         Nổi bật
       </div>
-      <div className='flex flex-col justify-center items-center md:flex-row md:justify-between gap-9'>
+      <div className='flex flex-col flex-wrap justify-center items-center lg:flex-row gap-9'>
         <Card
           image='/assets/aa_09052023024953251.png'
           title='Sự kiện'

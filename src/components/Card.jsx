@@ -5,7 +5,7 @@ function Card({ image, title, description, url, date }) {
   const navigate = useNavigate()
   return (
     <div
-      className='border border-border-card h-[355px] w-[242px] md:h-[465px] md:w-[392px] rounded-xl
+      className='border border-border-card h-[355px] w-[262px] sm:h-[465px] sm:w-[392px] rounded-xl
          flex flex-col gap-5 lg:gap-9 pb-4 transition-transform duration-300 hover:scale-105'
     >
       <img

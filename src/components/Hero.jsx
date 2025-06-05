@@ -2,7 +2,7 @@ import { FaArrowRight } from 'react-icons/fa6'
 
 export default function Hero() {
   return (
-    <div className='h-[700px] xl:h-[934px] bg-dark-brown relative top-[90px] select-none'>
+    <div className='h-[500px] sm:h-[684px] xl:h-[934px] bg-dark-brown relative top-[90px] select-none'>
       <img
         src='/assets/bg1.jpg'
         className='absolute inset-0 w-full h-full object-cover object-right-bottom opacity-40 mix-blend-overlay'
@@ -22,8 +22,8 @@ export default function Hero() {
         Thiên Trang
       </div>
       <div
-        className='absolute top-[230px] sm:top-[258px] lg:top-[358px] left-10 md:left-20 lg:left-[119px] xl:left-[189px] w-[150px] lg:w-[426px]
-       h-[192px] flex flex-col gap-12 z-10'
+        className='hidden sm:flex absolute top-[230px] sm:top-[258px] lg:top-[358px] left-10 md:left-20 lg:left-[119px] xl:left-[189px] w-[150px] lg:w-[426px]
+       h-[192px] flex-col gap-12 z-10'
       >
         <div className='leading-[35px] md:leading-[40px] font-medium text-[18px] md:text-[24px] text-white'>
           Kết nối năng lượng <br /> Khai phá tiềm năng trong mỗi cá nhân
@@ -35,8 +35,8 @@ export default function Hero() {
       <img
         src='/assets/thientrang.png'
         alt='Thien Trang'
-        className='absolute hidden sm:block bottom-0 left-[200px] sm:left-[150px] md:left-[250px] 
-        lg:left-[470px] xl:left-[628px] sm:h-[460px] xl:h-[697px] object-cover z-10'
+        className='absolute  bottom-0 left-0 sm:left-[150px] md:left-[250px] 
+        lg:left-[470px] xl:left-[628px] h-[360px] sm:h-[460px] xl:h-[697px] object-cover z-10'
       />
       <div className='absolute bottom-0 w-full z-10'>
         <img

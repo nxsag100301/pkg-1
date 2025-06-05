@@ -6,12 +6,14 @@ import QuestionsAndAnswers from './pages/QuestionsAndAnswers'
 import Footer from './components/Footer'
 import DetailPost from './pages/DetailPost'
 import ListOutstanding from './pages/ListOutstanding'
+import { ToastContainer } from 'react-toastify'
 
 // https://pkg-1.vercel.app/
 
 function App() {
   return (
     <Router>
+      <ToastContainer position='top-right' autoClose={1500} theme='light' />
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />

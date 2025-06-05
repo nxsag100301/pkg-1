@@ -68,7 +68,7 @@ export default function Navbar() {
         <img
           src='/assets/logophuckhang.png'
           alt='Logo Phuc Khang'
-          className='w-[112px] h-[70px] cursor-pointer'
+          className='w-[92px] h-[50px] md:w-[112px] md:h-[70px] cursor-pointer'
           onClick={() => navigate('/')}
         />
         <div className='hidden lg:flex flex-row gap-[72px] items-center'>

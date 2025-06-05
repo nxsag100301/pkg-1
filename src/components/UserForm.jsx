@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import { RiArrowDropDownLine } from 'react-icons/ri'
 
 function UserForm() {
   const [form, setForm] = useState({
@@ -42,7 +44,21 @@ function UserForm() {
       if (data.error) {
         throw new Error(data.error)
       }
-      return data.responses
+      if (data.message === 'success' && data.statuscode === 200) {
+        toast.success('Đặt hẹn thành công!')
+        setForm({
+          name: '',
+          phone: '',
+          email: '',
+          fromDate: '',
+          toDate: '',
+          bookType: '',
+          address: '',
+          content: ''
+        })
+      } else {
+        toast.error('Đặt hẹn thất bại, có lỗi xảy ra!')
+      }
     } catch (error) {
       console.log('error fetch news: ', error.message)
     }
@@ -56,7 +72,7 @@ function UserForm() {
   const validate = () => {
     const newErrors = {}
     if (!form.name) newErrors.name = 'Vui lòng nhập họ tên'
-    if (!form.phone) newErrors.phone = 'Vui lòng nhập số điện thoại'
+    if (form.phone.length !== 10) newErrors.phone = 'Số điện thoại không hợp lệ'
     if (!form.email) newErrors.email = 'Vui lòng nhập email'
     else if (!/\S+@\S+\.\S+/.test(form.email))
       newErrors.email = 'Email không hợp lệ'
@@ -72,16 +88,6 @@ function UserForm() {
     e.preventDefault()
     if (validate()) {
       sendBooking(form)
-      setForm({
-        name: '',
-        phone: '',
-        email: '',
-        fromDate: '',
-        toDate: '',
-        bookType: '',
-        address: '',
-        content: ''
-      })
     }
   }
 
@@ -111,7 +117,12 @@ function UserForm() {
             type='text'
             name='phone'
             value={form.phone}
-            onChange={handleChange}
+            onChange={(e) => {
+              const value = e.target.value
+              if (/^\d*$/.test(value)) {
+                handleChange(e)
+              }
+            }}
             placeholder='Nhập số điện thoại'
             className={`input mt-[8px] w-full ${
               errors.phone ? 'border-red-500' : 'border-gray-300'
@@ -147,6 +158,7 @@ function UserForm() {
             name='fromDate'
             value={form.fromDate}
             onChange={handleChange}
+            min={new Date().toISOString().split('T')[0]}
             className={`input w-full mt-[8px] ${
               errors.date ? 'border-red-500' : 'border-gray-300'
             }`}
@@ -159,6 +171,7 @@ function UserForm() {
             name='toDate'
             value={form.toDate}
             onChange={handleChange}
+            min={new Date().toISOString().split('T')[0]}
             className={`input w-full mt-[8px] ${
               errors.date ? 'border-red-500' : 'border-gray-300'
             }`}
@@ -169,18 +182,19 @@ function UserForm() {
         <p className='text-red-500 text-sm relative bottom-3'>{errors.date}</p>
       )}
 
-      <div>
+      <div className='relative'>
         <label className='font-medium'>Địa điểm</label>
         <select
           name='bookType'
           value={form.bookType}
           onChange={handleChange}
-          className='input w-full border-gray-300 mt-[8px]'
+          className='input w-full border-gray-300 mt-[8px] appearance-none pr-10'
         >
           <option value='ONLINE'>Hẹn trực tuyến</option>
           <option value='OFFLINE'>Hẹn tại cửa hàng</option>
           <option value='ADDRESS'>Hẹn tại địa chỉ</option>
         </select>
+        <RiArrowDropDownLine className='pointer-events-none absolute right-3 top-[52px] text-[28px]' />
       </div>
 
       {form.bookType === 'ADDRESS' && (
