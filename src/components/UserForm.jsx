@@ -1,9 +1,20 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
-import { RiArrowDropDownLine } from 'react-icons/ri'
 import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
+import Select from 'react-select'
 import { FaCalendarAlt } from 'react-icons/fa'
+import { RiArrowDropDownLine } from 'react-icons/ri'
+import 'react-datepicker/dist/react-datepicker.css'
+// eslint-disable-next-line no-unused-vars
+import { components } from 'react-select'
+
+const CustomDropdownIndicator = (props) => {
+  return (
+    <components.DropdownIndicator {...props}>
+      <RiArrowDropDownLine size={24} color={'black'} />
+    </components.DropdownIndicator>
+  )
+}
 
 function UserForm() {
   const [form, setForm] = useState({
@@ -16,9 +27,77 @@ function UserForm() {
     address: '',
     content: ''
   })
+
   const [errors, setErrors] = useState({})
 
-  const sendBooking = async (form) => {
+  const bookTypeOptions = [
+    { value: 'ONLINE', label: 'Hẹn trực tuyến' },
+    { value: 'OFFLINE', label: 'Hẹn tại cửa hàng' },
+    { value: 'ADDRESS', label: 'Hẹn tại địa chỉ' }
+  ]
+
+  const customSelectStyles = {
+    control: (base, state) => ({
+      ...base,
+      borderWidth: '1px',
+      borderColor: state.isFocused ? 'black' : 'none', // hoặc màu gray bạn muốn
+      padding: '0 16px', // p-4 ngang (px-4)
+      height: '60px', // h-[60px]
+      backgroundColor: '#f0f4f8', // tương đương bg-gray-30 (có thể đổi màu cho gần đúng)
+      borderRadius: '20px', // rounded-[20px]
+      boxShadow: state.isFocused ? 'black' : 'none',
+      '&:hover': {
+        borderColor: 'none'
+      }
+    }),
+    valueContainer: (base) => ({
+      ...base,
+      padding: '0' // vì padding đã ở control rồi
+    }),
+    input: (base) => ({
+      ...base,
+      margin: '0',
+      padding: '0'
+    }),
+    placeholder: (base) => ({
+      ...base,
+      margin: '0',
+      padding: '0',
+      color: '#9ca3af' // gray-400
+    }),
+    indicatorsContainer: (base) => ({
+      ...base,
+      paddingRight: '8px'
+    })
+  }
+
+  const formatDate = (date) => {
+    if (!date) return ''
+    const d = new Date(date)
+    const day = String(d.getDate()).padStart(2, '0')
+    const month = String(d.getMonth() + 1).padStart(2, '0')
+    const year = d.getFullYear()
+    return `${day}/${month}/${year}`
+  }
+
+  const validate = () => {
+    const newErrors = {}
+    if (!form.name) newErrors.name = 'Vui lòng nhập họ tên'
+    if (form.phone.length !== 10) newErrors.phone = 'Số điện thoại không hợp lệ'
+    if (!form.email) newErrors.email = 'Vui lòng nhập email'
+    else if (!/\S+@\S+\.\S+/.test(form.email))
+      newErrors.email = 'Email không hợp lệ'
+    if (!form.fromDate || !form.toDate) newErrors.date = 'Vui lòng chọn ngày'
+    else if (form.fromDate > form.toDate)
+      newErrors.date = 'Ngày kết thúc không được nhỏ hơn ngày bắt đầu'
+    if (form.bookType === 'ADDRESS' && !form.address)
+      newErrors.address = 'Vui lòng nhập địa chỉ hẹn'
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const sendBooking = async (formData) => {
     try {
       const res = await fetch(
         'https://brandname.phuckhangnet.vn/api/store/StoredProcedure',
@@ -27,19 +106,19 @@ function UserForm() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             loai: 101,
-            customphone: form.phone,
-            customname: form.name,
-            customemail: form.email,
-            note: form.content,
+            customphone: formData.phone,
+            customname: formData.name,
+            customemail: formData.email,
+            note: formData.content,
             addressbook:
-              form.bookType === 'ADDRESS'
-                ? form.address
-                : form.bookType === 'ONLINE'
+              formData.bookType === 'ADDRESS'
+                ? formData.address
+                : formData.bookType === 'ONLINE'
                 ? 'Hẹn trực tuyến'
                 : 'Hẹn tại cửa hàng',
-            addressbookvalue: form.bookType,
-            datetimebook1: form.fromDate,
-            datetimebook2: form.toDate
+            addressbookvalue: formData.bookType,
+            datetimebook1: formData.fromDate,
+            datetimebook2: formData.toDate
           })
         }
       )
@@ -63,6 +142,7 @@ function UserForm() {
       }
     } catch (error) {
       console.log('error fetch booking: ', error.message)
+      toast.error('Lỗi khi gửi yêu cầu đặt hẹn!')
     }
   }
 
@@ -74,45 +154,16 @@ function UserForm() {
     }))
   }
 
-  const validate = () => {
-    const newErrors = {}
-    if (!form.name) newErrors.name = 'Vui lòng nhập họ tên'
-    if (form.phone.length !== 10) newErrors.phone = 'Số điện thoại không hợp lệ'
-    if (!form.email) newErrors.email = 'Vui lòng nhập email'
-    else if (!/\S+@\S+\.\S+/.test(form.email))
-      newErrors.email = 'Email không hợp lệ'
-    if (!form.fromDate || !form.toDate) newErrors.date = 'Vui lòng chọn ngày'
-    else if (form.fromDate > form.toDate)
-      newErrors.date = 'Ngày kết thúc không được nhỏ hơn ngày bắt đầu'
-    if (form.bookType === 'ADDRESS' && !form.address)
-      newErrors.address = 'Vui lòng nhập địa chỉ hẹn'
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
-
-  const formatDate = (date) => {
-    if (!date) return ''
-    const d = new Date(date)
-    const day = String(d.getDate()).padStart(2, '0')
-    const month = String(d.getMonth() + 1).padStart(2, '0')
-    const year = d.getFullYear()
-    return `${day}/${month}/${year}`
-  }
-
   const handleSubmit = (e) => {
-    console.log('check form: ', {
-      ...form,
-      fromDate: formatDate(form.fromDate),
-      toDate: formatDate(form.toDate)
-    })
     e.preventDefault()
     if (validate()) {
-      sendBooking({
+      const formattedForm = {
         ...form,
         fromDate: formatDate(form.fromDate),
         toDate: formatDate(form.toDate)
-      })
+      }
+      console.log('check form: ', formattedForm)
+      sendBooking(formattedForm)
     }
   }
 
@@ -184,7 +235,7 @@ function UserForm() {
               setForm((prev) => ({
                 ...prev,
                 fromDate: date,
-                toDate: form.toDate && form.toDate < date ? date : form.toDate
+                toDate: prev.toDate && prev.toDate < date ? date : prev.toDate
               }))
             }
             minDate={new Date()}
@@ -196,6 +247,7 @@ function UserForm() {
           />
           <FaCalendarAlt className='absolute right-4 bottom-5' />
         </div>
+
         <div className='w-full sm:w-1/2 flex flex-col relative'>
           <label className='font-medium'>Đến ngày</label>
           <DatePicker
@@ -217,18 +269,29 @@ function UserForm() {
       )}
 
       <div className='relative'>
-        <label className='font-medium'>Địa điểm</label>
-        <select
-          name='bookType'
-          value={form.bookType}
-          onChange={handleChange}
-          className='input w-full border-gray-300 mt-[8px] appearance-none pr-10'
-        >
-          <option value='ONLINE'>Hẹn trực tuyến</option>
-          <option value='OFFLINE'>Hẹn tại cửa hàng</option>
-          <option value='ADDRESS'>Hẹn tại địa chỉ</option>
-        </select>
-        <RiArrowDropDownLine className='pointer-events-none absolute right-3 top-[52px] text-[28px]' />
+        <label className='font-medium mb-1 block'>Địa điểm</label>
+        <Select
+          components={{
+            DropdownIndicator: CustomDropdownIndicator,
+            IndicatorSeparator: () => null
+          }}
+          options={bookTypeOptions}
+          value={bookTypeOptions.find((opt) => opt.value === form.bookType)}
+          onChange={(selectedOption) =>
+            setForm((prev) => ({
+              ...prev,
+              bookType: selectedOption.value
+            }))
+          }
+          styles={customSelectStyles}
+          classNamePrefix={
+            errors.bookType ? 'react-select-error' : 'react-select'
+          }
+          placeholder='Chọn địa điểm'
+        />
+        {errors.bookType && (
+          <p className='text-red-500 text-sm mt-1'>{errors.bookType}</p>
+        )}
       </div>
 
       {form.bookType === 'ADDRESS' && (
@@ -260,6 +323,7 @@ function UserForm() {
           className='border-2 p-4 bg-gray-30 rounded-[20px] mt-[8px] outline-none focus:border-black'
         />
       </div>
+
       <button
         type='submit'
         className='button bg-primary w-full h-[60px] text-white rounded-lg'
