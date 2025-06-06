@@ -20,3 +20,9 @@ body {
 .input {
   @apply border-2 p-4 h-[60px] bg-gray-30 rounded-[20px] focus:border-black outline-none;
 }
+
+.news-content img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: 'contain';
+}

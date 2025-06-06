@@ -112,6 +112,7 @@ function DetailPost() {
               </div>
               {listNews && listNews.length > 0 && (
                 <div
+                  className='news-content'
                   dangerouslySetInnerHTML={{
                     __html: listNews[0].articlecontent
                   }}
