@@ -204,12 +204,12 @@ export default function Navbar() {
       <div className='lg:hidden'>
         {isOpenMenu ? (
           <IoMdClose
-            className='text-[40px] text-primary bg-white z-10 cursor-pointer p-2 rounded-md'
+            className='text-[40px] text-white z-10 cursor-pointer rounded-md'
             onClick={() => setIsOpenMenu(false)}
           />
         ) : (
           <IoMenuSharp
-            className='text-[40px] text-primary bg-white z-10 cursor-pointer p-2 rounded-md'
+            className='text-[40px] text-white z-10 cursor-pointer rounded-md'
             onClick={() => setIsOpenMenu(true)}
           />
         )}
