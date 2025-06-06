@@ -8,11 +8,9 @@ function Partners() {
   const partnerLogos = [
     'Frame 58.png',
     'Frame 59.png',
-    'image 4.png',
     'image 5.png',
     'image 6.png',
     'image 7.png',
-    'image 8.png',
     'image 9.png',
     'image 10.png'
   ]
@@ -39,23 +37,40 @@ function Partners() {
           loop={true}
           autoplay={{ delay: 1500, disableOnInteraction: false }}
           breakpoints={{
-            320: { slidesPerView: 3 },
+            320: { slidesPerView: 2 },
+            420: { slidesPerView: 3 },
             640: { slidesPerView: 4 },
             768: { slidesPerView: 5 },
             1024: { slidesPerView: 6 }
           }}
-          className='w-full max-w-[1262px] h-full flex'
+          className='w-full max-w-[1262px] h-[90px] flex'
         >
           {partnerLogos.map((file, index) => (
-            <SwiperSlide key={index} className='flex gap-1'>
+            <SwiperSlide key={index} className='flex items-center'>
               <img
                 src={`/assets/partners/${file}`}
                 alt={`partner-${index}`}
-                className='px-3 transition-transform duration-300 hover:scale-110
-                 object-fit xl:object-contain w-full min-h-[90px] max-h-[90px]'
+                className='transition-transform duration-300 hover:scale-110
+                 object-contain w-full h-full'
               />
             </SwiperSlide>
           ))}
+          <SwiperSlide className='mx-6'>
+            <img
+              src={`/assets/partners/image 8.png`}
+              alt={`partner-image 8.png`}
+              className='transition-transform duration-300 hover:scale-110
+                 object-cover h-full'
+            />
+          </SwiperSlide>
+          <SwiperSlide className='mx-6'>
+            <img
+              src={`/assets/partners/image 4.png`}
+              alt={`partner-image 4.png`}
+              className='transition-transform duration-300 hover:scale-110
+                 object-cover h-full'
+            />
+          </SwiperSlide>
         </Swiper>
       </div>
     </div>
@@ -63,3 +78,15 @@ function Partners() {
 }
 
 export default Partners
+
+// const partnerLogos = [
+//     'Frame 58.png',
+//     'Frame 59.png',
+//     'image 4.png',
+//     'image 5.png',
+//     'image 6.png',
+//     'image 7.png',
+//     'image 8.png',
+//     'image 9.png',
+//     'image 10.png'
+//   ]
