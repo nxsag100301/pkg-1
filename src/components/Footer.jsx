@@ -1,9 +1,9 @@
 import { useCallback, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 function Footer() {
   const location = useLocation()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const scrollToSection = useCallback((sectionId) => {
     const section = document.getElementById(sectionId)
     if (section) {
@@ -12,13 +12,13 @@ function Footer() {
       })
     }
   }, [])
-  const goToBookingSection = () => {
-    if (location.pathname !== '/') {
-      navigate('/', { state: { scrollTo: 'booking' } })
-    } else {
-      scrollToSection('booking')
-    }
-  }
+  // const goToBookingSection = () => {
+  //   if (location.pathname !== '/') {
+  //     navigate('/', { state: { scrollTo: 'booking' } })
+  //   } else {
+  //     scrollToSection('booking')
+  //   }
+  // }
   useEffect(() => {
     if (location.pathname === '/' && location.state?.scrollTo) {
       scrollToSection(location.state.scrollTo)
