@@ -49,12 +49,13 @@ function Footer() {
               Khảo sát đã được các chuyên gia lựa chọn cho các vấn đề của bạn và
               cùng Phúc Khang Gems giải quyết ngay!
             </div>
-            <div
+            <a
+              href='https://dangky.phuckhanggem.com/y2025/'
+              target='_blank'
               className='button font-medium bg-white w-[216px] h-[54px] px-6 py-4 text-[20px] leading-8'
-              onClick={goToBookingSection}
             >
               Tham gia miễn phí
-            </div>
+            </a>
           </div>
           <div className='flex flex-col gap-6 items-center md:items-start'>
             <div className='font-medium text-[20px] leading-8 text-white'>
