@@ -40,7 +40,7 @@ function NewsSections() {
       <div className='flex justify-center uppercase font-bold text-[20px] md:text-[36px] leading-[44px]'>
         Tin tức
       </div>
-      <div className='flex flex-col flex-wrap justify-center items-center 2xl:flex-row gap-9 border-2 max-w-screen-xl'>
+      <div className='flex flex-col flex-wrap justify-center items-center 2xl:flex-row gap-9'>
         {listNews &&
           listNews.length > 0 &&
           listNews.map((news) => (
