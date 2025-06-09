@@ -11,17 +11,17 @@ export default function Hero() {
         className='absolute inset-0 w-full h-full object-cover object-right-bottom opacity-40 mix-blend-overlay'
       />
 
-      <div className='relative w-full h-full max-w-screen-xl mx-auto md:mx-0 lg:mx-auto 2xl:mx-auto'>
+      <div className='relative w-[320px] mx-auto h-full max-w-screen-xl sm:w-full md:mx-0 lg:mx-auto 2xl:mx-auto'>
         <div
           className='absolute font-harmony top-[66px] lg:top-[46px] left-8 sm:left-10 md:left-[100px] lg:left-[0px]
-          text-white lg:w-[500px] font-normal text-[100px] md:text-[120px] lg:text-[200px] 
+          text-white lg:w-[500px] font-normal text-[80px] md:text-[120px] lg:text-[200px] 
           leading-[56px] lg:leading-[156px] tracking-[0px] text-center z-10 lg:pl-20'
         >
           Phạm Ngọc
         </div>
 
         <div
-          className='absolute font-extrabold text-[45px] sm:text-[75px] lg:text-[120px] xl:text-[160px] 
+          className='absolute font-extrabold text-[44px] sm:text-[75px] lg:text-[120px] xl:text-[160px] 
           leading-[180px] h-[168px] top-[60px] sm:top-[70px] lg:top-[150px] left-8 md:left-[130px] lg:left-[0px] 
           uppercase bg-banner-gradient bg-clip-text text-transparent z-0 lg:pl-20'
         >
