@@ -29,14 +29,14 @@ export default {
       'thien-trang': "url('/assets/thientrang.png')",
       'banner-gradient':
         'linear-gradient(180deg, #B22830 16.67%, #4C1114 151.79%)'
-    },
-    screens: {
-      sm: '600px',
-      md: '768px',
-      lg: '992px',
-      xl: '1200px',
-      '2xl': '1536px'
     }
+    // screens: {
+    //   sm: '600px',
+    //   md: '768px',
+    //   lg: '992px',
+    //   xl: '1200px',
+    //   '2xl': '1536px'
+    // }
   },
   plugins: []
 }

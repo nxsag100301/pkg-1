@@ -105,7 +105,7 @@ function Banner() {
             <img src='/assets/Frame 71.png' alt='Frame 71' />
           </div>
         </div>
-        <img src='/assets/Frame11.png' alt='Frame 11' className='z-10 py-9' />
+        <img src='/assets/exp.png' alt='Frame 11' className='z-10 py-9' />
       </div>
     </div>
   )
