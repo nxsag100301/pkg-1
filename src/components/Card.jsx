@@ -5,7 +5,7 @@ function Card({ image, title, description, url, date }) {
   const navigate = useNavigate()
   return (
     <div
-      className='border border-border-card h-[355px] w-[262px] sm:h-[465px] sm:w-[392px] rounded-xl
+      className='border border-border-card h-[420px] w-full sm:h-[465px] md:w-full lg:max-w-[392px] rounded-xl
          flex flex-col gap-5 lg:gap-9 pb-4 transition-transform duration-300 hover:scale-105 hover:shadow-lg cursor-pointer'
       onClick={() => navigate(`/${url}`)}
     >
@@ -20,7 +20,7 @@ function Card({ image, title, description, url, date }) {
             {title}
           </div>
           {description ? (
-            <div className='font-normal text-[13px] md:text-[16px] leading-[28px] text-gray-90'>
+            <div className='font-normal text-[13px] md:text-[16px] leading-[28px] text-gray-90 line-clamp-2'>
               {description}
             </div>
           ) : (

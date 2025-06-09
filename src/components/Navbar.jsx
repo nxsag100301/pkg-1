@@ -100,7 +100,7 @@ export default function Navbar() {
     //   }`}
     // >
     <div className='sticky top-0 left-0 z-20 w-full flex items-center justify-between bg-primary py-6 px-6 sm:px-20 transition-all duration-300 h-[90px]'>
-      <div className='h-[70px] flex flex-row gap-[72px] items-center'>
+      <div className='h-[70px] flex flex-row gap-[72px] items-center '>
         <img
           src='/assets/logophuckhang.png'
           alt='Logo Phuc Khang'

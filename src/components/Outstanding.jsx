@@ -38,7 +38,7 @@ export default function Outstanding() {
       <div className='flex justify-center uppercase font-bold text-[20px] md:text-[36px] leading-[44px]'>
         Nổi bật
       </div>
-      <div className='flex flex-col flex-wrap justify-center items-center lg:flex-row gap-9'>
+      <div className='flex flex-col flex-wrap justify-center items-center md:flex-row gap-9 px-6 sm:px-20'>
         <Card
           image='/assets/aa_09052023024953251.png'
           title='Sự kiện'
