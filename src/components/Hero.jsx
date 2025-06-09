@@ -11,7 +11,7 @@ export default function Hero() {
         className='absolute inset-0 w-full h-full object-cover object-right-bottom opacity-40 mix-blend-overlay'
       />
 
-      <div className='relative w-[320px] mx-auto h-full max-w-screen-xl sm:w-full md:mx-0 lg:mx-auto 2xl:mx-auto'>
+      <div className='relative w-[325px] mx-auto h-full max-w-screen-xl sm:w-[640px] md:w-[768px] lg:w-[900px] xl:w-full'>
         <div
           className='absolute font-harmony top-[66px] lg:top-[46px] left-8 sm:left-10 md:left-[100px] lg:left-[0px]
           text-white lg:w-[500px] font-normal text-[80px] md:text-[120px] lg:text-[200px] 
