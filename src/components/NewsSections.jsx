@@ -35,7 +35,7 @@ function NewsSections() {
   return (
     <div
       id='news-section'
-      className='flex flex-col max-w-full gap-[50px] md:gap-[72px] bg-outstanding pt-[96px] pb-[80px] px-6 xl:px-20'
+      className='flex flex-col mx-auto gap-[50px] md:gap-[72px] bg-outstanding pt-[96px] pb-[80px] xl:px-[80px] px-6 sm:px-20'
     >
       <div className='flex justify-center uppercase font-bold text-[20px] md:text-[36px] leading-[44px]'>
         Tin tức
