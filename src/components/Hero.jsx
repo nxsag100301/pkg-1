@@ -13,7 +13,7 @@ export default function Hero() {
 
       <div className='relative w-[325px] mx-auto h-full max-w-screen-xl sm:w-[640px] md:w-[768px] lg:w-[900px] xl:w-full'>
         <div
-          className='absolute font-harmony top-[66px] lg:top-[46px] left-8 sm:left-10 md:left-[100px] lg:left-[0px]
+          className='absolute font-harmony top-[66px] lg:top-[46px] left-8 sm:left-10 md:left-[80px] lg:left-[0px]
           text-white lg:w-[500px] font-normal text-[80px] md:text-[120px] lg:text-[200px] 
           leading-[56px] lg:leading-[156px] tracking-[0px] text-center z-10 lg:pl-20'
         >
@@ -21,22 +21,26 @@ export default function Hero() {
         </div>
 
         <div
-          className='absolute font-extrabold text-[44px] sm:text-[75px] lg:text-[120px] xl:text-[160px] 
-          leading-[180px] h-[168px] top-[60px] sm:top-[70px] lg:top-[150px] left-8 md:left-[130px] lg:left-[0px] 
+          className='absolute font-extrabold text-[44px] sm:text-[75px] md:text-[95px] lg:text-[120px] xl:text-[160px] 
+          leading-[180px] h-[168px] top-[60px] sm:top-[70px] md:top-[90px] lg:top-[150px] left-8 md:left-[80px] lg:left-[0px] 
           uppercase bg-banner-gradient bg-clip-text text-transparent z-0 lg:pl-20'
         >
           Thiên Trang
         </div>
 
         <div
-          className='hidden sm:flex absolute top-[230px] sm:top-[258px] lg:top-[358px] left-10 md:left-20 lg:left-0 w-[150px] lg:w-[426px]
-          h-[192px] flex-col gap-12 z-10 lg:pl-20'
+          className='hidden sm:flex absolute top-[350px] lg:top-[358px] left-10 md:left-20 lg:left-0 w-[150px] md:w-[200px] lg:w-[426px]
+          h-[192px] flex-col gap-6 lg:gap-12 z-10 lg:pl-20'
         >
-          <div className='leading-[35px] md:leading-[40px] font-medium text-[18px] md:text-[24px] text-white'>
+          <div className='leading-[35px] lg:leading-[40px] font-medium text-[14px] md:text-[16px] lg:text-[20px] xl:text-[24px] text-white'>
             Kết nối năng lượng <br /> Khai phá tiềm năng trong mỗi cá nhân
           </div>
-          <div className='button text-primary hover:text-white text-[20px] leading-[32px] gap-2 font-medium font-jakarta bg-white hover:bg-primary py-2 h-[64px] w-[210px]'>
-            Xem thêm <FaArrowRight className='relative text-[17px] top-[2px]' />
+          <div
+            className='button text-primary hover:text-white text-[16px] lg:text-[20px] leading-[26px] lg:leading-[32px] gap-2 font-medium 
+          font-jakarta bg-white hover:bg-primary py-2 h-auto lg:h-[64px] md:w-auto lg:w-[210px]'
+          >
+            Xem thêm{' '}
+            <FaArrowRight className='relative text-[14px] lg:text-[17px] top-[2px]' />
           </div>
         </div>
 
