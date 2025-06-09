@@ -4,7 +4,8 @@ function ComunicateForm() {
   return (
     <div
       id='booking'
-      className='px-10 md:px-20 py-[94px] flex flex-row justify-between 2xl:justify-center gap-[157px] bg-outstanding w-full items-center'
+      className='px-6 md:px-20 py-[94px] flex flex-row justify-between 2xl:justify-center
+       gap-[157px] bg-outstanding w-full items-center'
     >
       <div className='max-w-[959px] flex flex-col gap-8'>
         <div className='flex flex-col gap-4'>
