@@ -8,6 +8,7 @@ import DetailPost from './pages/DetailPost'
 import ListOutstanding from './pages/ListOutstanding'
 import NotFound from './pages/NotFound'
 import { ToastContainer } from 'react-toastify'
+import ScrollToTop from './components/ScrollToTop'
 
 // https://pkg-1.vercel.app/
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <Router>
       <ToastContainer position='top-right' autoClose={1500} theme='light' />
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path='*' element={<NotFound />} />
